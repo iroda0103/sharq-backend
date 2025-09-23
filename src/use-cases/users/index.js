@@ -1,4 +1,4 @@
-const userDb = require("../../data-access/usersDb");
+const userDb = require("../../data-access/userDb");
 const Jwt = require("../../adapters/Jwt");
 const makeAddUser = require("./addUser");
 const makeListUser = require("./listUser");

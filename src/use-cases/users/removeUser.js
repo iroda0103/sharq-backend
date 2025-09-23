@@ -2,7 +2,7 @@ const { NotFoundError } = require("../../shared/errors");
 
 /**
  * @param {object} deps
- * @param {import('../../data-access/usersDb')} deps.usersDb
+ * @param {import('../../data-access/userDb')} deps.userDb
  */
 module.exports = function makeRemoveUser({ userDb }) {
   return async function removeUser({ id }) {

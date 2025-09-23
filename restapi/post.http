@@ -1,0 +1,48 @@
+POST http://localhost:3000/api/posts
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjhjZTRlMTI3YzgwZDMxNTQ0ODY4YTRkIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTc1ODM1MDkxNSwiZXhwIjoxNzU4MzU0NTE1fQ.hwupHBtwFKLek2q4jp3QKDY9lBoqx1V1Epvqcte_xJc 
+Content-Type: application/json
+
+{   
+    "title": "🏛️ Zamonaviy auditoriyalar – multimedia vositalari bilan jihozlangan, qulay va interaktiv darslar uchun mos.",
+    "content": "Ekologik blog post",
+    "authorName": "Iroda Muminova"
+}
+
+###
+GET http://localhost:3000/api/posts
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjhjZTRlMTI3YzgwZDMxNTQ0ODY4YTRkIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTc1ODM1MDkxNSwiZXhwIjoxNzU4MzU0NTE1fQ.hwupHBtwFKLek2q4jp3QKDY9lBoqx1V1Epvqcte_xJc 
+
+
+###
+GET http://localhost:3000/api/posts/68d11ef51c07bdef40c3830b
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjhjZTRlMTI3YzgwZDMxNTQ0ODY4YTRkIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTc1ODM1MDkxNSwiZXhwIjoxNzU4MzU0NTE1fQ.hwupHBtwFKLek2q4jp3QKDY9lBoqx1V1Epvqcte_xJc 
+
+
+###
+DELETE http://localhost:3000/api/posts/68d0f608899073d8fa3fc258
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjhjZTRlMTI3YzgwZDMxNTQ0ODY4YTRkIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTc1ODM1MDkxNSwiZXhwIjoxNzU4MzU0NTE1fQ.hwupHBtwFKLek2q4jp3QKDY9lBoqx1V1Epvqcte_xJc 
+
+
+###
+GET http://localhost:3000/api/posts/me
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjhjZTRlMTI3YzgwZDMxNTQ0ODY4YTRkIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTc1ODM1MDkxNSwiZXhwIjoxNzU4MzU0NTE1fQ.hwupHBtwFKLek2q4jp3QKDY9lBoqx1V1Epvqcte_xJc 
+
+
+###
+PATCH http://localhost:3000/api/posts/68d036db2a6ad187b98a61b1
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjhjZTRlMTI3YzgwZDMxNTQ0ODY4YTRkIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTc1ODM1MDkxNSwiZXhwIjoxNzU4MzU0NTE1fQ.hwupHBtwFKLek2q4jp3QKDY9lBoqx1V1Epvqcte_xJc 
+Content-Type: application/json
+
+{
+    "title": "📚 Kitoblarni sevuvchilar uchun – zamonaviy, keng kutubxona har doim ochiq."
+}
+
+
+###
+PATCH http://localhost:3000/api/posts/me
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjhjZTRlMTI3YzgwZDMxNTQ0ODY4YTRkIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTc1ODM1MDkxNSwiZXhwIjoxNzU4MzU0NTE1fQ.hwupHBtwFKLek2q4jp3QKDY9lBoqx1V1Epvqcte_xJc 
+Content-Type: application/json
+
+{
+    "title": "Mening postim yangilandi"
+}

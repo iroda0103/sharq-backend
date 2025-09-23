@@ -7,7 +7,8 @@ const schema = new mongoose.Schema(
     age: { type: Number, required: true },
     role: { type: String, required: true },
     username: { type: String, required: true, unique: true },
-    password: { type: String, required: true }
+    password: { type: String, required: true },
+    img: { type: String, required: false }
   },
   {
     toJSON: { virtuals: true },

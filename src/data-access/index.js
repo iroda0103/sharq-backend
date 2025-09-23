@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 const config = require("../shared/config");
-const usersDb = require("./usersDb");
+const userDb = require("./userDb");
+const postDb = require("./postDb");
+const applicationDb = require("./applicationDb");
 
 module.exports = {
   connect() {
@@ -8,5 +10,7 @@ module.exports = {
       `mongodb://${config.db.host}:${config.db.port}/${config.db.name}`
     );
   },
-  usersDb
+  userDb,
+  postDb,
+  applicationDb
 };

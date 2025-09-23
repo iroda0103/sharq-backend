@@ -3,12 +3,12 @@ const { NotFoundError } = require("../../shared/errors");
 
 /**
  * @param {object} deps
- * @param {import('../../data-access/usersDb')} deps.userDb
+ * @param {import('../../data-access/userDb')} deps.userDb
  */
 module.exports = function makeEditUser({ userDb }) {
   return async function editUser({ id, ...changes }) {
     const userToEdit = await userDb.findById({ id });
-
+    
     if (!userToEdit) {
       throw new NotFoundError("Foydalanuvchi topilmadi.");
     }

@@ -3,7 +3,7 @@ const { BadRequestError } = require("../../shared/errors");
 
 /**
  * @param {object} deps
- * @param {import('../../data-access/usersDb')} deps.userDb
+ * @param {import('../../data-access/userDb')} deps.userDb
  */
 module.exports = function makeAddUser({ userDb }) {
   return async function addUser(data) {
@@ -26,8 +26,10 @@ module.exports = function makeAddUser({ userDb }) {
       last_name: user.getLastName(),
       age: user.getAge(),
       role: user.getRole(),
+      img: user.getImg(),
       username: user.getUsername(),
-      password: user.getPassword()
+      password: user.getPassword(),
+    
     });
 
     return result;

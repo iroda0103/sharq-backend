@@ -7,6 +7,7 @@ module.exports = function httpValidator(data, schema) {
   });
   async function validate() {
     const sanitizedData = {};
+    
     for (const type of ["body", "query", "params"]) {
       if (!data[type]) continue;
       const { error, value } = schema[type].validate(data[type]);

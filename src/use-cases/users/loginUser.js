@@ -3,7 +3,7 @@ const { UnauthorizedError } = require("../../shared/errors");
 
 /**
  * @param {object} deps
- * @param {import('../../data-access/usersDb')} deps.userDb
+ * @param {import('../../data-access/userDb')} deps.userDb
  * @param {import('../../adapters/Jwt')} deps.Jwt
  */
 module.exports = function makeLoginUser({ userDb, Jwt }) {

@@ -2,7 +2,7 @@ const { NotFoundError } = require("../../shared/errors");
 
 /**
  * @param {object} deps
- * @param {import('../../data-access/usersDb')} deps.usersDb
+ * @param {import('../../data-access/userDb')} deps.userDb
  */
 module.exports = function makeShowUser({ userDb }) {
   return async function showUser(filter) {

@@ -35,6 +35,7 @@ module.exports = function makeExpressCallback(
         return res.status(403).json({ error: "Siz ruxsatga ega emassiz" });
       }
     }
+    
     const httpRequest = {
       body: req.body,
       params: req.params,
@@ -45,6 +46,25 @@ module.exports = function makeExpressCallback(
       },
       ...additional
     };
+
+
+    if (req.file) {
+      console.log('EXPRESS CALBAKK');
+
+      httpRequest.file = { [req.file.fieldname]: req.file.filename }
+    }
+
+    if (req.files) {
+      httpRequest.files = {}
+      for (const label in req.files) {
+        const filenames = req.files[label].map((f) => f.filename)
+        if (filenames.length === 1) {
+          httpRequest.files[label] = filenames[0]
+        } else {
+          httpRequest.files[label] = filenames
+        }
+      }
+    }
 
     controllers(httpRequest)
       .then((httpResponse) => {
