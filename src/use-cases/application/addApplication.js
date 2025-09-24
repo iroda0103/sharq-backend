@@ -3,59 +3,74 @@ const { BadRequestError } = require("../../shared/errors");
 
 /**
  * @param {object} deps
- * @param {import('../../data-access/applicationDb')} deps.applicationDb
+ * @param {import('../../data-access/applicationsDb')} deps.applicationDb
  * @param {import('../../adapters/Upload')} deps.Upload
  */
 module.exports = function makeAddApplication({ applicationDb, Upload }) {
   return async function addApplication(data) {
     try {
-      const application = makeApplication({
-        ...data
-      });
-      console.log('data',data);
-      
+      console.log('Data', data)
 
-      // Title bo‘yicha unique tekshirish (agar kerak bo‘lsa)
-      const applicationInfo = await applicationDb.findOne({ title: application.getTitle() });
+      const application = makeApplication({
+        ...data,
+      });
+
+      const applicationInfo = await applicationDb.findOne({
+        phone: application.getPhone(),
+      });
 
       if (applicationInfo) {
         throw new BadRequestError(
-          "Bunday sarlavhali (title) application allaqachon mavjud"
+          "Bunday nomli telefon raqami mavjud boshqa raqam tanlang"
         );
       }
+      const applicationInfo2 = await applicationDb.findOne({
+        "passport.jsshir": application.getPassportJsshir(),
+      });
 
+      if (applicationInfo2) {
+        throw new BadRequestError(
+          "Bunday Passportli odam avval hujjat topshirgan"
+        );
+      }
+      console.log('pppp', applicationInfo2);
+
+      console.log('TEST', application)
       const result = await applicationDb.insert({
         id: application.getId(),
-        title: application.getTitle(),
-        content: application.getContent(),
-        imageUrl: application.getImageUrl(),
-        gallery: application.getGallery(),
-        tags: application.getTags(),
+        first_name: application.getFirstName(),
+        last_name: application.getLastName(),
+        father_name: application.getFatherName(),
+        address: application.getAddress(),
+        phone: application.getPhone(),
         status: application.getStatus(),
-        formatted: application.getFormatted(),
-        publishTo: application.getPublishTo(),
-        author: {
-          name: application.getAuthorName(),
-          img: application.getAuthorImg()
+        additionalInfo: application.getAdditionalInfo(),
+        passport: {
+          series: application.getPassportSeries(),
+          number: application.getPassportNumber(),
+          jsshir: application.getPassportJsshir(),
+          images: application.getPassportImage(),
+
         },
-        stats: application.getStats()
+        // pasport rasmlarni DB’da saqlash
       });
-      if (data.authorImg) {
-        await Upload.save(data.authorImg)
+
+      // Fayllarni uploads/passport ga ko‘chirish
+      if (data.passportImage && data.passportImage.length > 0) {
+        for (const filename of data.passportImage) {
+          await Upload.save("passportImage", filename);
+        }
       }
-      if (data.imageUrl) {
-        await Upload.save(data.imageUrl)
-      }
-      return result;
-    }
-    catch (e) {
-      if (data.authorImg) {
-        await Upload.removeTemp(data.authorImg)
-      }
-      if (data.imageUrl) {
-        await Upload.removeTemp(data.imageUrl)
-      }
-      throw e
+
+      // return result;
+    } catch (e) {
+      // Agar xatolik bo‘lsa temp’dan o‘chirib tashlaymiz
+      // if (data.passportImage && data.passportImage.length > 0) {
+      //   for (const filename of data.passportImage) {
+      //     await Upload.removeTemp("passportImage", filename);
+      //   }
+      // }
+      throw e;
     }
   };
 };

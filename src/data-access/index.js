@@ -7,7 +7,8 @@ const applicationDb = require("./applicationDb");
 module.exports = {
   connect() {
     return mongoose.connect(
-      `mongodb://${config.db.host}:${config.db.port}/${config.db.name}`
+      // `mongodb://${config.db.host}:${config.db.port}/${config.db.name}`
+      config.db.url
     );
   },
   userDb,

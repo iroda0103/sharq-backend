@@ -1,4 +1,3 @@
-const { get } = require("mongoose");
 const { InvalidPropertyError } = require("../../shared/errors");
 
 module.exports = function buildMakeApplication({ Id }) {
@@ -10,13 +9,11 @@ module.exports = function buildMakeApplication({ Id }) {
     birth_date,
     phone,
     address,
-    passport = {
-        series,
-        number,
-        jsshir,
-        back_img,
-        front_img
-    },
+    passportSeries,
+    passportNumber,
+    passportJsshir,
+    additionalInfo,
+    passportImage = [],
     status = "created",
   } = {}) {
     if (!id) {
@@ -31,40 +28,47 @@ module.exports = function buildMakeApplication({ Id }) {
       throw new InvalidPropertyError("App uchun matn (last_name) bo'lishi shart.");
     }
 
-    if (!["created", "progress","completed"].includes(status)) {
-      throw new InvalidPropertyError("App status faqat 'created', 'progress' yoki 'completed' bo'lishi kerak.");
+    if (!['pending', 'created', 'rejected', 'successfull'].includes(status)) {
+      throw new InvalidPropertyError("App status faqat 'pending', 'created', 'rejected' yoki 'successfull' bo'lishi kerak.");
     }
 
-    if(!father_name){
-        throw new InvalidPropertyError("App uchun otasining ismi (father_name) bo'lishi shart.");
+    if (!father_name) {
+      throw new InvalidPropertyError("App uchun otasining ismi (father_name) bo'lishi shart.");
     }
 
-    if(!phone){
-        throw new InvalidPropertyError("App uchun telefon raqami (phone) bo'lishi shart.");
+    if (!phone) {
+      throw new InvalidPropertyError("App uchun telefon raqami (phone) bo'lishi shart.");
     }
 
-    if(!passport.series){
-        throw new InvalidPropertyError("App uchun passport seriyasi (series) bo'lishi shart.");
+    if (!passportSeries) {
+      throw new InvalidPropertyError("App uchun passport seriyasi (series) bo'lishi shart.");
     }
 
-    if(!passport.number){
-        throw new InvalidPropertyError("App uchun passport raqami (number) bo'lishi shart.");
+    if (!passportNumber) {
+      throw new InvalidPropertyError("App uchun passport raqami (number) bo'lishi shart.");
     }
 
-    if(!passport.jsshir){
-        throw new InvalidPropertyError("App uchun jsshir (jsshir) bo'lishi shart.");
+    if (!passportJsshir) {
+      throw new InvalidPropertyError("App uchun jsshir (jsshir) bo'lishi shart.");
+    }
+    if (!Array.isArray(passportImage) || passportImage.length === 0) {
+      throw new InvalidPropertyError("App uchun passport images massivi bo'lishi shart.");
     }
 
     return Object.freeze({
       getId: () => id,
-      getFirst_name: () => first_name,
-      getLast_name: () => last_name,
-      getFather_name: () => father_name,
-      getBirth_date: () => birth_date,
+      getFirstName: () => first_name,
+      getLastName: () => last_name,
+      getFatherName: () => father_name,
+      getBirthDate: () => birth_date,
       getPhone: () => phone,
       getAddress: () => address,
-      getPassport: () => passport,
-      getStatus: () => status
+      getPassportSeries: () => passportSeries,
+      getPassportNumber: () => passportNumber,
+      getPassportJsshir: () => passportJsshir,
+      getStatus: () => status,
+      getPassportImage: () => passportImage,
+      getAdditionalInfo: () => additionalInfo
     });
   };
 };

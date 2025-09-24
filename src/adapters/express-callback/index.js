@@ -47,7 +47,7 @@ module.exports = function makeExpressCallback(
       ...additional
     };
 
-
+console.log('REQ',req.body,req.file,req.files)
     if (req.file) {
       console.log('EXPRESS CALBAKK');
 

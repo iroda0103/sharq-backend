@@ -61,7 +61,7 @@ async function findById({ id: _id }) {
 
 async function findOne(filter) {
   const result = await model.findOne(filter).lean();
-
+console.log('result', result)
   if (!result) {
     return null;
   }
