@@ -5,3 +5,4 @@ exports.getApplicationSchema = {
     id: Joi.string().trim()
   })
 };
+

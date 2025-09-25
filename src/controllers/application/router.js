@@ -14,7 +14,7 @@ const router = express.Router();
 
 router.post("/application",  Upload.fields([{ name: "passportImage", maxCount: 2 }]), postApplication);
 router.get("/application", getApplications);
-router.get("/app", getApp);
+router.post("/app", getApp);
 router.get("/application/:id", getApplication);
 router.patch("/application/:id", patchApplication);
 router.delete("/application/:id", deleteApplication);

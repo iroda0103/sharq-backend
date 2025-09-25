@@ -44,6 +44,7 @@ module.exports = function makeAddApplication({ applicationDb, Upload }) {
         address: application.getAddress(),
         phone: application.getPhone(),
         status: application.getStatus(),
+        birth_date: application.getBirthDate(),
         additionalInfo: application.getAdditionalInfo(),
         passport: {
           series: application.getPassportSeries(),

@@ -51,6 +51,9 @@ module.exports = function buildMakeApplication({ Id }) {
     if (!passportJsshir) {
       throw new InvalidPropertyError("App uchun jsshir (jsshir) bo'lishi shart.");
     }
+    if (!birth_date) {
+      throw new InvalidPropertyError("App uchun tug'ilgan sana (birth_date) bo'lishi shart.");
+    }
     if (!Array.isArray(passportImage) || passportImage.length === 0) {
       throw new InvalidPropertyError("App uchun passport images massivi bo'lishi shart.");
     }

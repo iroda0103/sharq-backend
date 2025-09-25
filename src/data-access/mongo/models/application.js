@@ -5,9 +5,9 @@ const schema = new mongoose.Schema(
     first_name: { type: String, required: true },
     last_name: { type: String, required: true },
     father_name: { type: String, required: true },
-    birth_date: { type: String, required: false },
+    birth_date: { type: String, required: true },
     phone: { type: String, required: true },
-    address: { type: String, required: false },
+    address: { type: String, required: true },
     status: { type: String, enum: ['pending', 'created', 'rejected', 'successfull'], default: 'created' },
     additionalInfo: { type: String, required: false },
     passport: {

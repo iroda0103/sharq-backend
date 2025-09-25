@@ -30,6 +30,7 @@ module.exports = function makeEditApplication({ applicationDb }) {
       father_name: application.getFatherName(),
       address: application.getAddress(),
       phone: application.getPhone(),
+      birth_date: application.getBirthDate(),
       status: application.getStatus(),
       additionalInfo: application.getAdditionalInfo(),
       passport: {

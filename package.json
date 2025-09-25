@@ -5,7 +5,7 @@
     "main": "src/index.js",
     "scripts": {
         "dev": "nodemon src/index.js",
-        "start": "node sr/index.js",
+        "start": "node src/index.js",
         "format:check": "prettier --check .",
         "format:write": "npx prettier --write ."
     },
