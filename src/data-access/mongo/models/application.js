@@ -23,7 +23,7 @@ const schema = new mongoose.Schema(
   {
     toJSON: { virtuals: true },
     versionKey: false,
-    timestamps: false
+    timestamps: true
   }
 );
 
